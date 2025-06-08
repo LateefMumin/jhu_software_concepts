@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Lateef Mumin Portfolio{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Hero Section -->
+    <section class="hero-section py-5">
+        <div class="row align-items-center min-vh-100">
+            <!-- Bio text on the left as required -->
+            <div class="col-lg-8 pe-lg-5">
+                <div class="hero-content">
+                    <h1 class="display-4 fw-bold mb-3">{{ personal_info.name }}</h1>
+                    <h2 class="h4 text-primary mb-4">{{ personal_info.position }}</h2>
+                    
+                    <div class="bio-section">
+                        <h3 class="h5 mb-3">About Me</h3>
+                        <p class="lead text-muted lh-lg">{{ personal_info.bio }}</p>
+                    </div>
+                    
+                    <!-- Call to action buttons -->
+                    <div class="cta-buttons mt-4">
+                        <a href="{{ url_for('contact.contact') }}" class="btn btn-primary me-3">
+                            <i class="fas fa-envelope me-2"></i>Get In Touch
+                        </a>
+                        <a href="{{ url_for('projects.projects') }}" class="btn btn-outline-secondary">
+                            <i class="fas fa-code me-2"></i>View Projects
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Profile image on the right as required -->
+            <div class="col-lg-4 text-center">
+                <div class="profile-image-container">
+                    <img src="{{ url_for('static', filename=personal_info.profile_image) }}" 
+                         alt="Profile picture of {{ personal_info.name }}" 
+                         class="profile-image img-fluid rounded-circle shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills/Technologies Section -->
+    <section class="skills-section py-5">
+        <div class="container">
+            <h3 class="text-center mb-5">Technical Skills</h3>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <i class="fas fa-code fa-3x text-primary mb-3"></i>
+                            <h5 class="card-title">Web Development</h5>
+                            <p class="card-text">Flask, HTML5, CSS3, JavaScript, Bootstrap</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <i class="fab fa-python fa-3x text-primary mb-3"></i>
+                            <h5 class="card-title">Programming</h5>
+                            <p class="card-text">Python, Data Structures, Algorithms</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <i class="fas fa-tools fa-3x text-primary mb-3"></i>
+                            <h5 class="card-title">Tools & Platforms</h5>
+                            <p class="card-text">Git, GitHub, Linux, Software Engineering</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

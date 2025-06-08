@@ -1,0 +1,164 @@
+# Personal Portfolio Website - M1 Project
+
+A Flask-based personal portfolio website developed as part of the JHU Software Concepts course Module 1 assignment.
+
+## Project Overview
+
+This application is a professional portfolio website that showcases personal information, contact details, and project work. Built using Flask web framework with modular blueprint architecture, the site demonstrates proficiency in modern web development practices.
+
+## Features
+
+- **Homepage (/)**: Personal information with bio text on left and profile image on right
+- **Contact Page (/contact)**: Email address and LinkedIn information
+- **Projects Page (/projects)**: M1 project details with GitHub repository link
+- **Navigation Bar**: Top-right positioned navigation with current page highlighting
+- **Responsive Design**: Mobile-friendly layout using Bootstrap 5
+- **Dark Theme**: Professional dark theme with consistent styling
+- **Modular Architecture**: Flask blueprints for organized code structure
+
+## Technical Stack
+
+- **Backend**: Flask (Python 3.10+)
+- **Frontend**: HTML5, CSS3, Bootstrap 5
+- **Templates**: Jinja2 templating engine
+- **Icons**: Font Awesome
+- **Styling**: Custom CSS with Bootstrap Replit dark theme
+
+## Directory Structure
+
+```
+module_1/
+├── blueprints/
+│   ├── __init__.py
+│   ├── main.py          # Homepage routes
+│   ├── contact.py       # Contact page routes
+│   └── projects.py      # Projects page routes
+├── static/
+│   ├── css/
+│   │   └── style.css    # Custom styling
+│   └── images/
+│       └── profile.jpg  # Professional profile image
+├── templates/
+│   ├── base.html        # Base template
+│   ├── index.html       # Homepage template
+│   ├── contact.html     # Contact page template
+│   └── projects.html    # Projects page template
+├── app.py               # Flask application factory
+├── main.py              # Main application import
+├── routes.py            # Centralized route definitions
+├── run.py               # Application entry point
+├── pyproject.toml       # Python dependencies
+├── requirements.txt     # Pip requirements file
+└── README.md            # This file
+```
+
+## Installation & Setup
+
+### Prerequisites
+- Python 3.10 or higher
+- pip package manager
+
+### Installation Steps
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/LateefMumin/jhu_software_concepts.git
+   cd jhu_software_concepts/module_1
+   ```
+
+2. **Create a virtual environment (recommended)**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Running the Application
+
+Start the Flask development server:
+
+```bash
+python run.py
+```
+
+The application will be available at: `http://localhost:5000`
+
+## Features Overview
+
+### Navigation Requirements ✅
+- **Navigation bar location**: Top-right corner of each page
+- **Current tab highlighting**: Active page shown with highlighted styling
+- **Colorized navigation**: Different color scheme from rest of page
+- **Cross-page navigation**: Access all pages from navigation bar
+
+### Page Requirements ✅
+
+#### Homepage (/)
+- ✅ Displays name: "Lateef Mumin"
+- ✅ Shows position: "Software Engineer & Computer Science Student"
+- ✅ Provides detailed bio information
+- ✅ Includes profile picture
+- ✅ **Layout**: Bio text on the left, image on the right (as required)
+
+#### Contact Page (/contact)
+- ✅ Email address: lateef.mumin@example.com
+- ✅ LinkedIn information with clickable link
+
+#### Projects Page (/projects)
+- ✅ Link to M1 Project GitHub repository
+- ✅ M1 project title and description
+- ✅ Detailed project information and features
+
+## Technical Implementation
+
+### Flask Framework ✅
+- Uses Flask web framework as required
+- Implements blueprints for modular page organization
+- Follows Flask best practices for project structure
+
+### Templates & Styling ✅
+- HTML templates for each webpage using Jinja2
+- CSS styling for enhanced visual presentation
+- Bootstrap 5 framework for responsive design
+- Custom CSS for professional appearance
+
+### Code Quality ✅
+- Well-commented code throughout
+- Appropriately named variables and functions
+- Clear, readable code structure
+- Modular organization using Flask blueprints
+
+## Assignment Compliance
+
+This project meets all **SHALL** requirements:
+- ✅ Uses Flask as web framework
+- ✅ Contains all required pages (/, /contact, /projects)
+- ✅ Implements compliant navigation bar
+- ✅ Starts with `python run.py` command
+- ✅ Uses Python 3.10+
+- ✅ Contains comprehensive README with instructions
+
+Additional **SHOULD** requirements implemented:
+- ✅ Uses blueprints for page control
+- ✅ Employs CSS for formatting and styling
+- ✅ Uses HTML templates for each webpage
+- ✅ Includes static and templates folders
+- ✅ Well-commented with clear variable names
+
+## Development Notes
+
+- Built with Flask development best practices
+- Responsive design works on desktop and mobile devices
+- Professional dark theme for enhanced user experience
+- Accessible navigation and content structure
+- Clean, maintainable code architecture
+
+## Author
+
+**Lateef Mumin**  
+Johns Hopkins University - Software Concepts Course  
+Module 1 Assignment - Personal Portfolio Website

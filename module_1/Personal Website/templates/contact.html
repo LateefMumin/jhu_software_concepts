@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Contact - Lateef Mumin Portfolio{% endblock %}
+
+{% block content %}
+<div class="container">
+    <section class="contact-section py-5">
+        <div class="row justify-content-center min-vh-100 align-items-center">
+            <div class="col-lg-8">
+                <!-- Page Header -->
+                <div class="text-center mb-5">
+                    <h1 class="display-5 fw-bold mb-3">Get In Touch</h1>
+                    <p class="lead text-muted">I'd love to hear from you! Feel free to reach out for opportunities, collaborations, or just to say hello.</p>
+                </div>
+
+                <!-- Contact Information Cards -->
+                <div class="row g-4">
+                    <!-- Email Card -->
+                    <div class="col-md-6">
+                        <div class="card h-100 text-center shadow-sm">
+                            <div class="card-body p-4">
+                                <div class="contact-icon mb-3">
+                                    <i class="fas fa-envelope fa-3x text-primary"></i>
+                                </div>
+                                <h4 class="card-title mb-3">Email</h4>
+                                <p class="card-text text-muted mb-3">Send me an email for any inquiries</p>
+                                <a href="mailto:{{ contact_info.email }}" 
+                                   class="btn btn-primary">
+                                    <i class="fas fa-paper-plane me-2"></i>{{ contact_info.email }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LinkedIn Card -->
+                    <div class="col-md-6">
+                        <div class="card h-100 text-center shadow-sm">
+                            <div class="card-body p-4">
+                                <div class="contact-icon mb-3">
+                                    <i class="fab fa-linkedin fa-3x text-primary"></i>
+                                </div>
+                                <h4 class="card-title mb-3">LinkedIn</h4>
+                                <p class="card-text text-muted mb-3">Connect with me professionally</p>
+                                <a href="{{ contact_info.linkedin_url }}" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer"
+                                   class="btn btn-primary">
+                                    <i class="fab fa-linkedin me-2"></i>{{ contact_info.linkedin_display }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Contact Information -->
+                <div class="text-center mt-5">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <h5 class="card-title mb-3">
+                                <i class="fas fa-info-circle text-primary me-2"></i>
+                                Let's Connect!
+                            </h5>
+                            <p class="card-text">
+                                Whether you have a question about my work, want to discuss potential opportunities, 
+                                or just want to say hello, I'm always open to connecting with fellow developers, 
+                                students, and professionals in the tech industry.
+                            </p>
+                            <p class="card-text mb-0">
+                                <small class="text-muted">
+                                    <i class="fas fa-clock me-1"></i>
+                                    I typically respond within 24-48 hours
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Back to Home Link -->
+                <div class="text-center mt-4">
+                    <a href="{{ url_for('main.index') }}" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
