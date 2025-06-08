@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grad Café Data Analysis - JHU EP 605.256</title>
+    
+    <!-- Bootstrap CSS with Replit theme -->
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Header -->
+        <header class="row mb-4">
+            <div class="col-12">
+                <div class="text-center py-4">
+                    <h1 class="display-4 mb-2">
+                        <i class="fas fa-graduation-cap me-3"></i>
+                        Grad Café Data Analysis
+                    </h1>
+                    <p class="lead text-muted">SQL Data Analysis Platform</p>
+                    <p class="text-muted"><small>Author: Abdullateef Mumin</small></p>
+                    <hr class="my-4">
+                </div>
+            </div>
+        </header>
+
+        <!-- Error Display -->
+        {% if error %}
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="alert alert-danger" role="alert">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <strong>Database Error:</strong> {{ error }}
+                    <hr>
+                    <p class="mb-0">
+                        <small>
+                            Make sure the database is properly configured and the data has been loaded using <code>load_data.py</code>.
+                        </small>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Analysis Results -->
+        {% if results %}
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2><i class="fas fa-chart-bar me-2"></i>Analysis Results</h2>
+                    <button class="btn btn-outline-primary btn-sm" onclick="toggleQueries()">
+                        <i class="fas fa-code me-1"></i>Show/Hide SQL Queries
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Grid -->
+        <div class="row g-4">
+            {% if results.detailed_results %}
+                {% for query_key, result in results.detailed_results.items() %}
+                <div class="col-lg-6 col-xl-4">
+                    <div class="card h-100 result-card">
+                        <div class="card-header">
+                            <h6 class="card-title mb-0">
+                                <i class="fas fa-question-circle me-2"></i>
+                                {{ query_key.replace('_', ' ').title() }}
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            {% if result.error %}
+                                <div class="alert alert-warning">
+                                    <i class="fas fa-exclamation-triangle me-2"></i>
+                                    <strong>Error:</strong> {{ result.error }}
+                                </div>
+                            {% else %}
+                                <p class="question-text mb-3">{{ result.question }}</p>
+                                
+                                <div class="answer-section">
+                                    <h5 class="text-primary mb-2">
+                                        <i class="fas fa-chart-line me-2"></i>Answer:
+                                    </h5>
+                                    
+                                    {% if result.answer is mapping %}
+                                        <!-- Handle dictionary answers (like average scores) -->
+                                        <div class="row g-2">
+                                            {% for key, value in result.answer.items() %}
+                                            <div class="col-6">
+                                                <div class="metric-card">
+                                                    <div class="metric-label">{{ key.replace('avg_', '').upper() }}</div>
+                                                    <div class="metric-value">{{ value }}</div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        <!-- Handle simple answers -->
+                                        <div class="answer-value display-6 text-success mb-3">{{ result.answer }}</div>
+                                        {% if result.sample_size %}
+                                            <small class="text-muted">Sample size: {{ result.sample_size }}</small>
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                                
+                                <!-- SQL Query (Initially Hidden) -->
+                                <div class="sql-query mt-3" style="display: none;">
+                                    <h6 class="text-info">
+                                        <i class="fas fa-database me-2"></i>SQL Query:
+                                    </h6>
+                                    <pre class="code-block"><code>{{ result.query }}</code></pre>
+                                    {% if result.explanation %}
+                                    <p class="explanation-text mt-2">
+                                        <small><strong>Explanation:</strong> {{ result.explanation }}</small>
+                                    </p>
+                                    {% endif %}
+                                    {% if result.methodology %}
+                                    <p class="explanation-text">
+                                        <small><strong>Methodology:</strong> {{ result.methodology }}</small>
+                                    </p>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-12">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        No analysis results available. Please check the database connection.
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Summary Statistics -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-chart-pie me-2"></i>
+                            Summary Dashboard
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <canvas id="acceptanceChart" width="400" height="200"></canvas>
+                            </div>
+                            <div class="col-md-6">
+                                <canvas id="nationalityChart" width="400" height="200"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Footer -->
+        <footer class="row mt-5">
+            <div class="col-12">
+                <div class="text-center py-4 border-top">
+                    <p class="text-muted mb-0">
+                        <i class="fas fa-chart-bar me-2"></i>
+                        Graduate School Data Analysis Platform
+                    </p>
+                    <p class="text-muted mb-0">
+                        <small>Author: Abdullateef Mumin</small>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        function toggleQueries() {
+            const queries = document.querySelectorAll('.sql-query');
+            queries.forEach(query => {
+                query.style.display = query.style.display === 'none' ? 'block' : 'none';
+            });
+        }
+
+        // Create charts if results are available
+        {% if results and results.detailed_results %}
+        document.addEventListener('DOMContentLoaded', function() {
+            // Acceptance Rate Chart
+            const acceptanceCtx = document.getElementById('acceptanceChart');
+            if (acceptanceCtx) {
+                // Extract acceptance rate from results
+                let acceptanceRate = 0;
+                {% if results.detailed_results.spring_2025_acceptance_rate %}
+                    acceptanceRate = parseFloat("{{ results.detailed_results.spring_2025_acceptance_rate.answer }}".replace('%', ''));
+                {% endif %}
+                
+                new Chart(acceptanceCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Accepted', 'Not Accepted'],
+                        datasets: [{
+                            data: [acceptanceRate, 100 - acceptanceRate],
+                            backgroundColor: ['#28a745', '#dc3545'],
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Spring 2025 Acceptance Rate'
+                            },
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Nationality Chart
+            const nationalityCtx = document.getElementById('nationalityChart');
+            if (nationalityCtx) {
+                // Extract international percentage from results
+                let internationalRate = 0;
+                {% if results.detailed_results.international_percentage %}
+                    internationalRate = parseFloat("{{ results.detailed_results.international_percentage.answer }}".replace('%', ''));
+                {% endif %}
+                
+                new Chart(nationalityCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['International', 'Domestic'],
+                        datasets: [{
+                            data: [internationalRate, 100 - internationalRate],
+                            backgroundColor: ['#007bff', '#6c757d'],
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Student Nationality Distribution'
+                            },
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+            }
+        });
+        {% endif %}
+    </script>
+</body>
+</html>

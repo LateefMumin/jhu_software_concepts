@@ -1,0 +1,146 @@
+%PDF-1.4
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+
+2 0 obj
+<<
+/Type /Pages
+/Kids [3 0 R]
+/Count 1
+>>
+endobj
+
+3 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 612 792]
+/Contents 4 0 R
+/Resources <<
+/Font <<
+/F1 5 0 R
+/F2 6 0 R
+>>
+>>
+>>
+endobj
+
+4 0 obj
+<<
+/Length 2847
+>>
+stream
+BT
+/F1 16 Tf
+72 720 Td
+(Limitations of Grad Cafe Data Analysis) Tj
+0 -40 Td
+
+/F2 12 Tf
+0 -20 Td
+(Johns Hopkins University - EP 605.256) Tj
+0 -15 Td
+(Module 3: SQL Data Analysis Assignment) Tj
+0 -30 Td
+
+/F1 14 Tf
+(Inherent Limitations of Anonymous Submission Data) Tj
+0 -30 Td
+
+/F2 11 Tf
+(The analysis of grad school admission data from anonymously submitted sources like) Tj
+0 -15 Td
+(Grad Cafe reveals several inherent limitations that significantly impact the reliability) Tj
+0 -15 Td
+(and representativeness of the findings. First, the self-selection bias is profound:) Tj
+0 -15 Td
+(students who choose to share their admission results on public forums may not) Tj
+0 -15 Td
+(represent the broader applicant pool. Those with exceptional scores or outcomes) Tj
+0 -15 Td
+(\(either very high or very low\) are more likely to post, creating a biased sample) Tj
+0 -15 Td
+(that skews toward extremes. Additionally, the voluntary nature of submissions means) Tj
+0 -15 Td
+(that successful candidates might be more motivated to share their achievements,) Tj
+0 -15 Td
+(while rejected applicants might be less inclined to publicize their disappointments.) Tj
+0 -15 Td
+(This reporting bias can artificially inflate both the average test scores and) Tj
+0 -15 Td
+(acceptance rates observed in the data, making the sample unrepresentative of the) Tj
+0 -15 Td
+(true applicant population.) Tj
+
+0 -30 Td
+(Furthermore, the anonymous and unverified nature of these submissions introduces) Tj
+0 -15 Td
+(significant data quality concerns that distinguish this source from official) Tj
+0 -15 Td
+(institutional data. Without verification mechanisms, there is no way to ensure the) Tj
+0 -15 Td
+(accuracy of reported GPAs, test scores, or even admission outcomes. Some users) Tj
+0 -15 Td
+(might exaggerate their qualifications or fabricate results entirely, while others) Tj
+0 -15 Td
+(might misremember or misreport their actual scores. The example of GRE quantitative) Tj
+0 -15 Td
+(scores averaging 165 in grad school submissions versus the official 2023 average) Tj
+0 -15 Td
+(of 157 perfectly illustrates this phenomenon. This 8-point difference likely) Tj
+0 -15 Td
+(reflects the combined effect of high-achieving students being more likely to share) Tj
+0 -15 Td
+(their scores, possible score inflation in self-reporting, and the concentration of) Tj
+0 -15 Td
+(submissions from competitive programs that naturally attract higher-scoring) Tj
+0 -15 Td
+(applicants. Such discrepancies highlight why anonymously submitted data should be) Tj
+0 -15 Td
+(treated as anecdotal rather than statistically representative, serving more as a) Tj
+0 -15 Td
+(source of trends and patterns rather than definitive benchmarks for admission) Tj
+0 -15 Td
+(standards or applicant profiles.) Tj
+
+ET
+endstream
+endobj
+
+5 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica-Bold
+>>
+endobj
+
+6 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+endobj
+
+xref
+0 7
+0000000000 65535 f 
+0000000010 00000 n 
+0000000053 00000 n 
+0000000110 00000 n 
+0000000297 00000 n 
+0000003196 00000 n 
+0000003277 00000 n 
+trailer
+<<
+/Size 7
+/Root 1 0 R
+>>
+startxref
+3354
+%%EOF

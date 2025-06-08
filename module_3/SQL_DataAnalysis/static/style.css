@@ -1,0 +1,225 @@
+/* Custom styles for the Grad Cafe Analysis application */
+
+:root {
+    --gradient-primary: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-info) 100%);
+    --shadow-light: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-medium: 0 4px 8px rgba(0,0,0,0.15);
+    --border-radius: 8px;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+/* Header Styles */
+header h1 {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+/* Card Styles */
+.result-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: none;
+    box-shadow: var(--shadow-light);
+    border-radius: var(--border-radius);
+}
+
+.result-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.card-header {
+    background: var(--gradient-primary);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    border: none;
+}
+
+.card-header .card-title {
+    color: white;
+    font-weight: 600;
+}
+
+/* Question and Answer Styles */
+.question-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    color: var(--bs-body-color);
+}
+
+.answer-section {
+    background: rgba(var(--bs-primary-rgb), 0.05);
+    padding: 1rem;
+    border-radius: 6px;
+    border-left: 4px solid var(--bs-primary);
+}
+
+.answer-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--bs-primary);
+    text-align: center;
+    padding: 0.5rem;
+}
+
+/* Metric Cards for Dictionary Answers */
+.metric-card {
+    background: rgba(var(--bs-info-rgb), 0.1);
+    border: 1px solid rgba(var(--bs-info-rgb), 0.2);
+    border-radius: 6px;
+    padding: 0.75rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--bs-info);
+    margin-bottom: 0.25rem;
+}
+
+.metric-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--bs-body-color);
+}
+
+/* SQL Query Styles */
+.sql-query {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--bs-border-color);
+}
+
+.code-block {
+    background: var(--bs-gray-900);
+    color: var(--bs-light);
+    padding: 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    overflow-x: auto;
+    border: 1px solid var(--bs-border-color);
+}
+
+.explanation-text {
+    color: var(--bs-secondary);
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+/* Alert Customization */
+.alert {
+    border-radius: var(--border-radius);
+    border: none;
+}
+
+.alert-danger {
+    background: rgba(var(--bs-danger-rgb), 0.1);
+    color: var(--bs-danger);
+    border-left: 4px solid var(--bs-danger);
+}
+
+.alert-warning {
+    background: rgba(var(--bs-warning-rgb), 0.1);
+    color: var(--bs-warning);
+    border-left: 4px solid var(--bs-warning);
+}
+
+/* Button Styles */
+.btn {
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Footer Styles */
+footer {
+    margin-top: 3rem;
+}
+
+footer .border-top {
+    border-color: var(--bs-border-color) !important;
+}
+
+/* Chart Container Styles */
+#acceptanceChart, #nationalityChart {
+    max-height: 300px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .answer-value {
+        font-size: 1.25rem;
+    }
+    
+    .metric-value {
+        font-size: 1rem;
+    }
+    
+    .container-fluid {
+        padding: 1rem;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(var(--bs-primary-rgb), 0.3);
+    border-radius: 50%;
+    border-top-color: var(--bs-primary);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Utility Classes */
+.text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.shadow-custom {
+    box-shadow: var(--shadow-medium);
+}
+
+/* Custom Scrollbar */
+.code-block::-webkit-scrollbar {
+    height: 6px;
+}
+
+.code-block::-webkit-scrollbar-track {
+    background: var(--bs-gray-800);
+}
+
+.code-block::-webkit-scrollbar-thumb {
+    background: var(--bs-primary);
+    border-radius: 3px;
+}
+
+.code-block::-webkit-scrollbar-thumb:hover {
+    background: var(--bs-primary-dark);
+}
