@@ -1,0 +1,22 @@
+name: Check Only Explicit Libraries
+
+on: [push, pull_request]
+
+jobs:
+  check-imports:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install pipreqs
+        run: pip install pipreqs
+      - name: Generate imports and compare to requirements.txt
+        run: |
+          pipreqs . --force --savepath actual_requirements.txt
+          if ! diff -q actual_requirements.txt requirements.txt; then
+            echo "Error: Code uses libraries not listed in requirements.txt"
+            exit 1
+          fi
