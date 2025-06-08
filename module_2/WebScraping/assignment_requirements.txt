@@ -1,0 +1,30 @@
+# GradCafe Web Scraper - Johns Hopkins University Assignment Requirements
+# Advanced Python Module 2 - Web Scraping Project
+# 
+# Core Dependencies (Assignment Required Libraries Only)
+#
+urllib3>=2.0.0,<3.0.0
+beautifulsoup4>=4.12.0,<5.0.0
+
+# Standard Library Modules Used (No Installation Required):
+# - json: Data serialization and storage
+# - re: Regular expressions for pattern matching (GPA/GRE extraction)  
+# - time: Rate limiting and delays
+# - logging: Progress tracking and error reporting
+# - datetime: Timestamp generation
+# - os: File system operations
+# - sys: System-specific parameters
+
+# Project Information:
+# This scraper collects authentic graduate school admission data from GradCafe
+# using only the libraries specified in the assignment requirements.
+# 
+# Installation:
+# pip install -r assignment_requirements.txt
+#
+# Usage:
+# python scrape.py
+#
+# Output:
+# - applicant_data.json: Collected graduate admission records
+# - Console logs: Real-time progress and status updates
