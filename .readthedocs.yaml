@@ -1,4 +1,4 @@
-# Read the Docs configuration file
+# Read the Docs configuration file for modern-software-concepts
 # See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
 
 version: 2
@@ -9,15 +9,17 @@ build:
   tools:
     python: "3.11"
 
-# Build documentation in the docs/ directory with Sphinx
+# Build documentation in the module_4/docs/ directory with Sphinx
 sphinx:
-   configuration: docs/conf.py
+   configuration: module_4/docs/conf.py
 
 # Optionally declare the Python requirements required to build your docs
 python:
    install:
-   - requirements: requirements.txt
-   - requirements: docs/requirements.txt
+   - requirements: module_4/requirements.txt
+   - requirements: module_4/docs/requirements.txt
+   - method: pip
+     path: module_4
 
 # Set the version of Python and other tools you might need
 formats:
