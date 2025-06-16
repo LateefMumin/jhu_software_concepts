@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="900" height="700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .app-node { fill: #ffeb3b; stroke: #f57f17; stroke-width: 3; }
+      .local-node { fill: #e1f5fe; stroke: #0277bd; stroke-width: 2; }
+      .external-node { fill: #f3e5f5; stroke: #7b1fa2; stroke-width: 2; }
+      .builtin-node { fill: #e8f5e8; stroke: #388e3c; stroke-width: 2; }
+      .edge { stroke: #424242; stroke-width: 1.5; marker-end: url(#arrowhead); }
+      .text { font-family: Arial, sans-serif; font-size: 11px; text-anchor: middle; }
+      .title { font-size: 18px; font-weight: bold; }
+      .subtitle { font-size: 14px; font-weight: bold; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#424242" />
+    </marker>
+  </defs>
+  
+  <text x="450" y="25" class="text title">app.py Dependencies - Module 5 Assignment</text>
+  <text x="450" y="45" class="text subtitle">Complete Dependency Graph Analysis</text>
+  
+  <!-- Central app.py node -->
+  <rect x="400" y="80" width="100" height="40" class="app-node"/>
+  <text x="450" y="105" class="text title">app.py</text>
+  
+  <!-- Built-in Python modules -->
+  <rect x="100" y="150" width="80" height="35" class="builtin-node"/>
+  <text x="140" y="172" class="text">os</text>
+  
+  <rect x="200" y="150" width="80" height="35" class="builtin-node"/>
+  <text x="240" y="172" class="text">logging</text>
+  
+  <!-- External Flask ecosystem -->
+  <rect x="300" y="200" width="100" height="35" class="external-node"/>
+  <text x="350" y="222" class="text">flask</text>
+  
+  <rect x="450" y="200" width="130" height="35" class="external-node"/>
+  <text x="515" y="222" class="text">flask_sqlalchemy</text>
+  
+  <rect x="620" y="200" width="120" height="35" class="external-node"/>
+  <text x="680" y="222" class="text">sqlalchemy.orm</text>
+  
+  <rect x="600" y="150" width="150" height="35" class="external-node"/>
+  <text x="675" y="172" class="text">werkzeug.middleware</text>
+  
+  <!-- Local application modules that app.py imports through routes -->
+  <rect x="150" y="300" width="100" height="35" class="local-node"/>
+  <text x="200" y="322" class="text">models</text>
+  
+  <rect x="300" y="300" width="100" height="35" class="local-node"/>
+  <text x="350" y="322" class="text">routes</text>
+  
+  <rect x="450" y="300" width="120" height="35" class="local-node"/>
+  <text x="510" y="322" class="text">query_data</text>
+  
+  <rect x="620" y="300" width="120" height="35" class="local-node"/>
+  <text x="680" y="322" class="text">security_utils</text>
+  
+  <!-- Secondary dependencies through local modules -->
+  <rect x="100" y="400" width="100" height="35" class="external-node"/>
+  <text x="150" y="422" class="text">psycopg2</text>
+  
+  <rect x="250" y="400" width="100" height="35" class="external-node"/>
+  <text x="300" y="422" class="text">faker</text>
+  
+  <rect x="400" y="400" width="120" height="35" class="external-node"/>
+  <text x="460" y="422" class="text">email-validator</text>
+  
+  <rect x="570" y="400" width="100" height="35" class="external-node"/>
+  <text x="620" y="422" class="text">gunicorn</text>
+  
+  <!-- Direct dependencies from app.py -->
+  <line x1="450" y1="120" x2="140" y2="150" class="edge"/>
+  <line x1="450" y1="120" x2="240" y2="150" class="edge"/>
+  <line x1="450" y1="120" x2="350" y2="200" class="edge"/>
+  <line x1="450" y1="120" x2="515" y2="200" class="edge"/>
+  <line x1="450" y1="120" x2="680" y2="200" class="edge"/>
+  <line x1="450" y1="120" x2="675" y2="150" class="edge"/>
+  
+  <!-- Implicit dependencies through imports in app context -->
+  <line x1="450" y1="120" x2="200" y2="300" class="edge"/>
+  
+  <!-- routes.py dependencies -->
+  <line x1="350" y1="335" x2="510" y2="300" class="edge"/>
+  <line x1="350" y1="335" x2="680" y2="300" class="edge"/>
+  
+  <!-- Secondary dependencies -->
+  <line x1="510" y1="335" x2="150" y2="400" class="edge"/>
+  <line x1="680" y1="335" x2="150" y2="400" class="edge"/>
+  <line x1="200" y1="335" x2="300" y2="400" class="edge"/>
+  <line x1="200" y1="335" x2="460" y2="400" class="edge"/>
+  
+  <!-- Production dependency -->
+  <line x1="450" y1="120" x2="620" y2="400" class="edge"/>
+  
+  <!-- Legend -->
+  <rect x="50" y="500" width="800" height="180" fill="#f9f9f9" stroke="#666" stroke-width="1"/>
+  <text x="450" y="520" class="text title">Dependency Analysis Legend</text>
+  
+  <rect x="70" y="540" width="30" height="20" class="app-node"/>
+  <text x="110" y="554" class="text">app.py (Main Application)</text>
+  
+  <rect x="250" y="540" width="30" height="20" class="local-node"/>
+  <text x="290" y="554" class="text">Local Modules</text>
+  
+  <rect x="420" y="540" width="30" height="20" class="external-node"/>
+  <text x="460" y="554" class="text">External Libraries</text>
+  
+  <rect x="600" y="540" width="30" height="20" class="builtin-node"/>
+  <text x="640" y="554" class="text">Built-in Python</text>
+  
+  <text x="70" y="580" class="text">Direct app.py imports:</text>
+  <text x="70" y="600" class="text">• os (environment variables)</text>
+  <text x="70" y="615" class="text">• logging (application logging)</text>
+  <text x="70" y="630" class="text">• flask (web framework)</text>
+  <text x="70" y="645" class="text">• flask_sqlalchemy (ORM)</text>
+  <text x="70" y="660" class="text">• sqlalchemy.orm (database)</text>
+  
+  <text x="400" y="580" class="text">Secondary dependencies:</text>
+  <text x="400" y="600" class="text">• psycopg2 (PostgreSQL driver)</text>
+  <text x="400" y="615" class="text">• faker (test data generation)</text>
+  <text x="400" y="630" class="text">• email-validator (input validation)</text>
+  <text x="400" y="645" class="text">• gunicorn (WSGI server)</text>
+  <text x="400" y="660" class="text">• werkzeug (WSGI utilities)</text>
+</svg>
