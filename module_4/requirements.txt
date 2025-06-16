@@ -1,0 +1,15 @@
+# Core testing framework
+pytest>=7.0.0
+
+# Documentation generation
+sphinx>=5.0.0
+sphinx-rtd-theme>=1.0.0
+
+# Optional: Enhanced testing features
+pytest-html>=3.0.0
+pytest-cov>=4.0.0
+
+# Optional: Code quality tools
+black>=22.0.0
+flake8>=5.0.0
+mypy>=0.991
